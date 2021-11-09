@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import Button from './components/UI/Button/Button';
 import DemoOutput from './components/Demo/DemoOutput';
@@ -10,9 +10,9 @@ function App() {
 
   console.log('APP RUNNING!');
 
-  const toogleButtonHandler = () => {
+  const toogleButtonHandler = useCallback(() => {
     setShowParagraph((showParagraph) => !showParagraph);
-  };
+  }, []);
 
   return (
     <div className="app">
