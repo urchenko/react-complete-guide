@@ -1,56 +1,25 @@
 import React, { useState } from 'react';
-import Expenses from './components/Expenses/Expenses';
-import NewExpense from './components/NewExpenses/NewExpense';
 
-const DUMMY_EXPENSES = [
-  {
-    id: 'e1',
-    title: 'Toilet Paper',
-    amount: 94.12,
-    date: new Date(2020, 7, 14),
-  },
-  {
-    id: 'e2',
-    title: 'New TV',
-    amount: 799.49,
-    date: new Date(2021, 2, 12),
-  },
-  {
-    id: 'e3',
-    title: 'Car Insurance',
-    amount: 294.67,
-    date: new Date(2021, 2, 28),
-  },
-  {
-    id: 'e4',
-    title: 'New Desk (Wooden)',
-    amount: 450,
-    date: new Date(2021, 5, 12),
-  },
-];
+import Button from './components/UI/Button/Button';
 
-const App = () => {
-  const [expenses, setExpeses] = useState(DUMMY_EXPENSES);
+import './App.css';
 
-  const addExpenseHandler = (expense) => {
-    setExpeses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    });
+function App() {
+  const [showParagraph, setShowParagraph] = useState(false);
+
+  console.log('APP RUNNING!');
+
+  const toogleButtonHandler = () => {
+    setShowParagraph((showParagraph) => !showParagraph);
   };
 
   return (
-    <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+    <div className="app">
+      <h1>Hi there!</h1>
+      {showParagraph && <p>This is new!</p>}
+      <Button onClick={toogleButtonHandler}>Toogle Paragraph!</Button>
     </div>
   );
-
-  // return React.createElement(
-  //   'div',
-  //   {},
-  //   React.createElement('h2', {}, "Let's get started!"),
-  //   React.createElement(Expenses, { items: expenses })
-  // );
-};
+}
 
 export default App;
