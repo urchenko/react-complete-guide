@@ -19,7 +19,7 @@ function App() {
       <h1>Hi there!</h1>
       {/* {showParagraph && <p>This is new!</p>} */}
       {/* <DemoOutput show={showParagraph} /> */}
-      <DemoOutput />
+      <DemoOutput show={false} />
       <Button onClick={toogleButtonHandler}>Toogle Paragraph!</Button>
     </div>
   );
