@@ -4,6 +4,11 @@ const initialState = { counter: 0, showCounter: true };
 
 const counterReducer = (state = initialState, action) => {
   if (action.type === 'increment') {
+    // DON`T DO THIS WAY
+    // NEVER MUTATE EXISTING STATE
+    // state.counter++;
+    // return state;
+
     return {
       counter: state.counter + 1,
       showCounter: state.showCounter,
