@@ -1,20 +1,26 @@
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import MainHeader from './components/MainHeader';
 
 import Products from './pages/Products';
 import Welcome from './pages/Welcome';
+import ProductDetail from './pages/ProductDetail';
 
 function App() {
   return (
     <div>
       <MainHeader />
       <main>
-        <Route path="/welcome">
-          <Welcome />
-        </Route>
-        <Route path="/products">
-          <Products />
-        </Route>
+        <Switch>
+          <Route path="/welcome">
+            <Welcome />
+          </Route>
+          <Route path="/products" exact>
+            <Products />
+          </Route>
+          <Route path="/products/:productId">
+            <ProductDetail></ProductDetail>
+          </Route>
+        </Switch>
       </main>
     </div>
   );
@@ -22,5 +28,6 @@ function App() {
 
 export default App;
 
-// our domain/welcome => Welcome Component
-// our domain/products => Product Component
+// our domain.com/welcome => Welcome Component
+// our domain.com/products => Product Component
+// our domain.com/product-detail/a-book
