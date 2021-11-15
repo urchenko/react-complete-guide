@@ -7,9 +7,8 @@ import Welcome from './pages/Welcome';
 function App() {
   return (
     <div>
-      <header></header>
+      <MainHeader />
       <main>
-        <MainHeader />
         <Route path="/welcome">
           <Welcome />
         </Route>
