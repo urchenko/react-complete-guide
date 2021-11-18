@@ -1,56 +1,26 @@
-import React, { useState } from 'react';
-import Expenses from './components/Expenses/Expenses';
-import NewExpense from './components/NewExpenses/NewExpense';
+import { Switch, Route } from 'react-router-dom';
 
-const DUMMY_EXPENSES = [
-  {
-    id: 'e1',
-    title: 'Toilet Paper',
-    amount: 94.12,
-    date: new Date(2020, 7, 14),
-  },
-  {
-    id: 'e2',
-    title: 'New TV',
-    amount: 799.49,
-    date: new Date(2021, 2, 12),
-  },
-  {
-    id: 'e3',
-    title: 'Car Insurance',
-    amount: 294.67,
-    date: new Date(2021, 2, 28),
-  },
-  {
-    id: 'e4',
-    title: 'New Desk (Wooden)',
-    amount: 450,
-    date: new Date(2021, 5, 12),
-  },
-];
+import Layout from './components/Layout/Layout';
+import UserProfile from './components/Profile/UserProfile';
+import AuthPage from './pages/AuthPage';
+import HomePage from './pages/HomePage';
 
-const App = () => {
-  const [expenses, setExpeses] = useState(DUMMY_EXPENSES);
-
-  const addExpenseHandler = (expense) => {
-    setExpeses((prevExpenses) => {
-      return [expense, ...prevExpenses];
-    });
-  };
-
+function App() {
   return (
-    <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
-    </div>
+    <Layout>
+      <Switch>
+        <Route path='/' exact>
+          <HomePage />
+        </Route>
+        <Route path='/auth'>
+          <AuthPage />
+        </Route>
+        <Route path='/profile'>
+          <UserProfile />
+        </Route>
+      </Switch>
+    </Layout>
   );
-
-  // return React.createElement(
-  //   'div',
-  //   {},
-  //   React.createElement('h2', {}, "Let's get started!"),
-  //   React.createElement(Expenses, { items: expenses })
-  // );
-};
+}
 
 export default App;
