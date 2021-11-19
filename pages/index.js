@@ -35,12 +35,12 @@ function HomePage(props) {
 // }
 
 export async function getStaticProps() {
-  //fetch data from an API
+  // fetch data from an API
   return {
     props: {
       meetups: DUMMY_MEETUPS,
     },
-    revaluated: 10,
+    revalidate: 1,
   };
 }
 
